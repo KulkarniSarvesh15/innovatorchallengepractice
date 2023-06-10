@@ -17,16 +17,13 @@ public class JWTUtil {
     String secret = "innovator";
 
     public String extractUserName(String token){
-        return extractClaims(token, Claims::getSubject);
+        Claims claims = Jwts.parser().setSigningKey(secret).parseClaimsJws(token).getBody();
+        return claims.getSubject();
     }
 
     public Date extractExipration(String token){
-        return extractClaims(token, Claims::getExpiration);
-    }
-
-    public <T> T extractClaims(String token, Function<Claims,T> claimResolver){
         Claims claims = Jwts.parser().setSigningKey(secret).parseClaimsJws(token).getBody();
-        return claimResolver.apply(claims);
+        return claims.getExpiration();
     }
 
     public boolean isTokenExpired(String token){
