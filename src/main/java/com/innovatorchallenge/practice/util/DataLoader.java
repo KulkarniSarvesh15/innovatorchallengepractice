@@ -27,12 +27,12 @@ public class DataLoader implements ApplicationRunner {
         roleRepository.save(adminRole);
         roleRepository.save(userRole);
 
-        User police = new User("Police","Police123");
+        User police = new User(9167118897L,"Police123");
         Role policeRole = roleRepository.findByName("Admin");
         police.setRoles(Collections.singleton(policeRole));
         userController.addUser(police);
 
-        User citizen = new User("Citizen","Citizen123");
+        User citizen = new User(9167118899L,"Citizen123");
         Role citizenRole = roleRepository.findByName("User");
         citizen.setRoles(Collections.singleton(citizenRole));
         userController.addUser(citizen);

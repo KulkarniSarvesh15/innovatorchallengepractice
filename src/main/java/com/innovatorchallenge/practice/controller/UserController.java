@@ -34,7 +34,8 @@ public class UserController {
         } catch (Exception e){
             return new ResponseEntity<>("User Credentials Invalid", HttpStatus.BAD_REQUEST);
         }
-        return new ResponseEntity<>(jwtUtil.generateToken(user.getUserName()),HttpStatus.OK);
+        //return new ResponseEntity<>(jwtUtil.generateToken(user.getUserName()),HttpStatus.OK);
+        return new ResponseEntity<>(jwtUtil.generateToken(String.valueOf(user.getUserName())),HttpStatus.OK);
     }
 
     @PostMapping("/users/add")

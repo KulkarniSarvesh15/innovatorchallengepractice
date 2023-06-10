@@ -9,7 +9,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    public String userName;
+    public Long userName;
     public String password;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
@@ -20,12 +20,12 @@ public class User {
     public User() {
     }
 
-    public User(String userName, String password) {
+    public User(Long userName, String password) {
         this.userName = userName;
         this.password = password;
     }
 
-    public User(long id, String userName, String password, Set<Role> roles) {
+    public User(long id, Long userName, String password, Set<Role> roles) {
         this.id = id;
         this.userName = userName;
         this.password = password;
@@ -40,11 +40,11 @@ public class User {
         this.id = id;
     }
 
-    public String getUserName() {
+    public Long getUserName() {
         return userName;
     }
 
-    public void setUserName(String userName) {
+    public void setUserName(Long userName) {
         this.userName = userName;
     }
 
